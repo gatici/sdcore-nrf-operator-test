@@ -1,0 +1,43 @@
+name: sdcore-nrf-k8s
+display-name: SD-Core NRF K8s
+summary: Charmed Operator for the SD-Core Network Repository Function (NRF).
+description: Charmed Operator for the SD-Core Network Repository Function (NRF).
+website: https://charmhub.io/sdcore-nrf-k8s
+source: https://github.com/canonical/sdcore-nrf-k8s-operator
+issues: https://github.com/canonical/sdcore-nrf-k8s-operator/issues
+
+containers:
+  nrf:
+    resource: nrf-image
+    mounts:
+      - storage: config
+        location: /etc/nrf/
+      - storage: certs
+        location: /support/TLS
+
+resources:
+  nrf-image:
+    type: oci-image
+    description: OCI image for SD-Core nrf
+    upstream-source: ghcr.io/canonical/sdcore-nrf:1.3
+
+storage:
+  config:
+    type: filesystem
+    minimum-size: 1M
+  certs:
+    type: filesystem
+    minimum-size: 1M
+
+requires:
+  database:
+    interface: mongodb_client
+  certificates:
+    interface: tls-certificates
+
+provides:
+  fiveg-nrf:
+    interface: fiveg_nrf
+
+assumes:
+  - k8s-api

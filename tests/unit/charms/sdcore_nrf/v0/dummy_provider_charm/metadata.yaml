@@ -1,0 +1,13 @@
+# Copyright 2023 Canonical Ltd.
+# See LICENSE file for licensing details.
+
+name: fiveg-nrf-provider
+
+description: |
+  Dummy SD-Core NRF provider charm.
+summary: |
+  Dummy SD-Core NRF provider charm.
+
+provides:
+  fiveg-nrf:
+    interface: fiveg-nrf
