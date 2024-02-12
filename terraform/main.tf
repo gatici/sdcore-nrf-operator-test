@@ -16,12 +16,12 @@ resource "juju_application" "nrf" {
 }
 
 module "mongodb-k8s" {
-  source     = "git::https://github.com/gatici/mongodb-k8s-test.git//terraform"
+  source     = "git::https://github.com/gatici/mongodb-k8s-test.git/terraform"
   model_name = juju_model.sdcore.name
 }
 
 module "self-signed-certificates" {
-  source     = "git::https://github.com/gatici/self-signed-certificates-test.git//terraform"
+  source     = "git::https://github.com/gatici/self-signed-certificates-test.git/terraform"
   model_name = juju_model.sdcore.name
 }
 
